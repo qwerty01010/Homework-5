@@ -1,21 +1,21 @@
-﻿int [] createArray(int length)
+﻿double [] createArray(int length)
 {
     var random = new Random ();
-    var result = new int [length];
+    var result = new double [length];
     for (long i = 0; i < result.Length; i++)
     {
-        result [i] = random.Next(1,100);
+        result [i] = random.NextDouble ();
     }
     return result;
 }
 
-void printArray (int [] array)
+void printArray (double [] array)
 {
    Console.Write ("[");
    
     for (var i = 0; i < array.Length; i ++)
     {   
-        Console.Write (array[i]);
+        Console.Write ("{0,6:F2}", array[i]);
          if (i < array.Length - 1)
          Console.Write (", ");
         
@@ -24,14 +24,14 @@ void printArray (int [] array)
    Console.WriteLine();
 }
 
-int MaxMin (int [] array) {   
-    int Max = array [1];
-    int Min = array [1];
+double MaxMin (double [] array) {   
+    var Max = array [1];
+    var Min = array [1];
     for (int i = 0; i <= array.Length - 1; i++) {   
         if (array[i] > Max) Max = array[i];      
         if (array[i] < Min) Min = array[i];  
     }
-    int diffMaxMin = Max - Min;
+    var diffMaxMin = Max - Min;
     return diffMaxMin;
 }   
 
@@ -46,6 +46,6 @@ printArray(array);
 
 Console.WriteLine();
 
-int result = MaxMin(array);
+var result = MaxMin(array);
 
-Console.Write("Разница между Max и Min: " + result);
+Console.Write("Разница между Max и Min: " + "{0,6:F2}", result);
